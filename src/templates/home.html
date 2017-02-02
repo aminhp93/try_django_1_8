@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	Hello
-</body>	
-</html>
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block head_title %}Welcome | {% endblock %}
+<style>
+{% block style %}
+
+.lead {
+    text-align: center;
+}
+
+{% endblock %}
+</style>
+{% block jumbotron %}
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1>Try Django 1.8</h1>
+            <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+            <p>To see the difference between static and fixed top navbars, just scroll.</p>
+            <p>
+                <a class="btn btn-lg btn-primary" href="" role="button">Join us &raquo;</a>
+            </p>
+        </div>
+        <div class="col-sm-4" style="background-color:black; height:300px">
+        </div>
+    </div>
+</div>
+{% endblock %} {% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="lead">
+            Build with Django & Bootstrap
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="lead">
+            Create for starter
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="lead">
+            Always Open Source
+        </div>
+    </div>
+    <div class="col-xs-8 col-sm-6 col-md-3 pull-right">
+        <div class="lead">
+            {{ title }}
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %} {{ form|crispy }}
+            <input type="submit" value="Sign Up" class="btn btn-primary">
+        </form>
+    </div>
+</div>
+{% endblock %}
